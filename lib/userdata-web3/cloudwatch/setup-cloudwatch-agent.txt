@@ -1,0 +1,86 @@
+spawn /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
+# On which OS are you planning to use the agent? linux
+send "1\\n"
+# Are you using EC2 or On-Premises hosts? EC2
+send "1\\n"
+# Which user are you planning to run the agent? root
+send "1\\n"
+# Do you want to turn on StatsD daemon? yes
+send "1\\n"
+# Which port do you want StatsD daemon to listen to?
+send "8125\\n"
+# What is the collect interval for StatsD daemon? 10s
+send "1\\n"
+# What is the aggregation interval for metrics collected by StatsD daemon? 60s
+send "4\\n"
+# Do you want to monitor metrics from CollectD? yes
+send "1\\n"
+# Do you want to monitor any host metrics? e.g. CPU, memory, etc. yes
+send "1\\n"
+# Do you want to monitor cpu metrics per core? Additional CloudWatch charges may apply. yes
+send "1\\n"
+# Do you want to add ec2 dimensions (ImageId, InstanceId, InstanceType, AutoScalingGroupName) into all of your metrics if the info is available? yes
+send "1\\n"
+# Do you want to aggregate ec2 dimensions (InstanceId)? yes
+send "1\\n"
+# Would you like to collect your metrics at high resolution (sub-minute resolution)? This enables sub-minute resolution for all metrics, but you can customize for specific metrics in the output json file. 60s
+send "4\\n"
+# Which default metrics config do you want? Basic
+send "1\\n"
+# Are you satisfied with the above config? Note: it can be manually customized after the wizard completes to add additional items. yes
+send "1\\n"
+# Do you have any existing CloudWatch Log Agent (http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html) configuration file to import for migration? no
+send "2\\n"
+# Do you want to monitor any log files? yes
+send "1\\n"
+# Log file path
+send "/var/log/messages\\n"
+# Log group name
+send "/ec2/prd/web3\\n"
+# Log stream name
+send "{instance_id}/messages\\n"
+# Log Group Retention in days 1=infinite
+send "1\\n"
+# Do you want to specify any additional log files to monitor? yes
+send "1\\n"
+# Asked in a loop about logs
+send "/var/log/secure\\n"
+send "/ec2/prd/web3\\n"
+send "{instance_id}/secure\\n"
+send "1\\n"
+send "1\\n"
+send "/var/log/maillog\\n"
+send "/ec2/prd/web3\\n"
+send "{instance_id}/maillog\\n"
+send "1\\n"
+send "1\\n"
+send "/var/log/mackerel-agent.log\\n"
+send "/ec2/prd/web3\\n"
+send "{instance_id}/mackerel-agent.log\\n"
+send "1\\n"
+send "1\\n"
+send "/var/log/httpd/error_log\\n"
+send "/ec2/prd/web3\\n"
+send "{instance_id}/error_log\\n"
+send "1\\n"
+send "1\\n"
+send "/var/log/httpd/access_log\\n"
+send "/ec2/prd/web3\\n"
+send "{instance_id}/access_log\\n"
+send "1\\n"
+send "1\\n"
+send "/var/log/cron\\n"
+send "/ec2/prd/web3\\n"
+send "{instance_id}/cron\\n"
+send "1\\n"
+send "1\\n"
+send "/var/log/amazon/ssm/amazon-ssm-agent.log\\n"
+send "/ec2/prd/web3\\n"
+send "{instance_id}/amazon-ssm-agent.log\\n"
+send "1\\n"
+# End of being asked in a loop about logs.
+send "2\\n"
+# Do you want to store the config in the SSM parameter store? no
+send "2\\n"
+# Exit
+expect eof
