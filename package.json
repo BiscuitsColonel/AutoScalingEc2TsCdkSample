@@ -13,7 +13,7 @@
     "cdk:deploy": "cdk deploy \"*Stack\" --require-approval never"
   },
   "devDependencies": {
-    "@aws-cdk/assertions": "1.134.0",
+    "@aws-cdk/assertions": "1.186.0",
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",
     "aws-cdk": "1.134.0",
